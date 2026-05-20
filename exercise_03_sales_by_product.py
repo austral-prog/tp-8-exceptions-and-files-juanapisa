@@ -31,21 +31,23 @@ def read_sales(filename):
             "producto2": [200.0],
         }
     """
-    ventas = {}
-    with open(filename, 'r') as archivo:
+resultado = {}
+    with open (filename, 'r') as archivo:
         contenido = archivo.read()
-        registros = contenido.split(';')
-
-        for registro in registros:
-            if registro != "":
-                producto, valor = registro.split(':')
+    
+        partes = contenido.strip()
+        partes = partes.split(';')
+        
+        for parte in partes:
+            if parte != "":
+                producto, valor = parte.split(':')
                 valor = float(valor)
-
-                if producto in ventas:
-                    ventas[producto].append(valor)
-                else:
-                    ventas[producto] = [valor]
-    return ventas
+                
+                if producto not in resultado:
+                    resultado[producto] = [valor]
+                elif producto in resultado:
+                    resultado[producto].append(valor)
+    return resultado
 
 def process_sales(data):
     """
@@ -67,9 +69,8 @@ def process_sales(data):
         # imprime: "producto1: ventas totales $250.00, promedio $125.00"
     """
 
-    for producto in data:
+for producto in data:
         total = sum(data[producto])
         promedio = total / len(data[producto])
-
         print(f"{producto}: ventas totales ${total:.2f}, promedio ${promedio:.2f}")
 
