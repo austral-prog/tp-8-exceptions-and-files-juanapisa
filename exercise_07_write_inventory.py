@@ -29,7 +29,6 @@ def write_inventory(filename, inventory):
         # wood:10
     """
 
-    with open(filename, 'w') as archivo:
-        for cosas in sorted(inventory):
-            cantidad = inventory[cosas]
-            archivo.write(f"{cosas}:{cantidad}\n")
+with open(filename, 'w') as archivo:
+        for clave in sorted(inventory):
+            archivo.write(clave + ":" + str(inventory[clave]) + "\n")
