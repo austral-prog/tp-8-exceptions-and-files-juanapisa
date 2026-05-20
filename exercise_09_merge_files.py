@@ -38,7 +38,7 @@ def merge_files(file1, file2, output):
     with open(file2, 'r') as archivo2:
         contenido2 = archivo2.read()
 
-    with open(output, 'w') as salida:
-        salida.write(contenido1)
-        salida.write(contenido2)
+    with open(output, 'w') as archivo3:
+        archivo3.write(contenido1)
+        archivo3.write(contenido2)
 
