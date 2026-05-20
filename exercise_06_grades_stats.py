@@ -34,26 +34,22 @@ def grades_stats(filename):
             "Cami": (10.0, 10.0, 10.0),
         }
     """
-    alumnos = {}
+stats= {}
+
     with open(filename, 'r') as archivo:
-        for info in archivo:
-            info = info.strip()
-
-            if info == "":
+        for line in archivo:
+            clean_line = line.strip()
+            
+            if not clean_line:
                 continue
+            
+            student, grades = clean_line.split(':')
+            
+            grades = [float(n.strip()) for n in grades_str.split(',') if n.strip()]
+            
+            avg_grade = sum(grades) / len(grades)
+            max_grade = max(grades)
+            min_grade = min(grades)
 
-            header, notas = info.split(':')
-            notas = notas.split(',')
-
-            lista_notas = []
-            for nota in notas:
-                lista_notas.append(float(nota))
-
-            total = sum(lista_notas)
-            promedio = total / len(lista_notas)
-            maximo = max(lista_notas)
-            minimo = min(lista_notas)
-
-            alumnos[header] = (promedio, maximo, minimo)
-
-    return alumnos
+            stats[student] = (avg_grade, max_grade, min_grade)
+    return stats
