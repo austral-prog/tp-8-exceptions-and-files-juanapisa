@@ -45,30 +45,23 @@ def parse_log(filename):
     log_dict = {}
 
     with open(filename, "r") as file:
-        contenido = file.read()
+        for line in file:
+            clean_line = line.strip()
 
-    if not contenido.strip():
-        return log_dict
+            if not clean_line:
+                continue
 
-    lines = contenido.splitlines()
+            if ":" not in clean_line:
+                raise ValueError("invalid log line")
 
-    for line in lines:
-        clean_line = line.strip()
+            posicion_dos_puntos = clean_line.index(":")
+            
+            level = clean_line[:posicion_dos_puntos].strip()
+            message = clean_line[posicion_dos_puntos + 1 :].strip()
 
-        if not clean_line:
-            continue
+            if level not in log_dict:
+                log_dict[level] = []
 
-        if ":" not in clean_line:
-            raise ValueError("invalid log line")
-
-        level, message = clean_line.split(":", 1)
-
-        level = level.strip()
-        message = message.strip()
-
-        if level not in log_dict:
-            log_dict[level] = []
-
-        log_dict[level].append(message)
+            log_dict[level].append(message)
 
     return log_dict
