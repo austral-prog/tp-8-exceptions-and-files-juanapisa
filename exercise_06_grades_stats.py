@@ -43,13 +43,16 @@ def grades_stats(filename):
             if not clean_line:
                 continue
             
-            student, grades = clean_line.split(':')
+            student, grades_data = clean_line.split(':')
             
-            grades = [float(n.strip()) for n in grades_str.split(',') if n.strip()]
+            student = student.strip()
+            
+            grades = [float(n.strip()) for n in grades_data.split(',') if n.strip()]
             
             avg_grade = sum(grades) / len(grades)
             max_grade = max(grades)
             min_grade = min(grades)
 
             stats[student] = (avg_grade, max_grade, min_grade)
+            
     return stats
