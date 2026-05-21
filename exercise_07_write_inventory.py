@@ -31,4 +31,5 @@ def write_inventory(filename, inventory):
 
     with open(filename, 'w') as archivo:
         for clave in sorted(inventory):
-            archivo.write(clave + ":" + str(inventory[clave]) + "\n")
+            cantidad = inventory[clave]
+            archivo.write(f"{clave}:{cantidad}\n")
