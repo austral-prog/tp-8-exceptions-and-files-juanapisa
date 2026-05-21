@@ -42,7 +42,7 @@ def parse_log(filename):
             "WARN": ["lento"],
         }
     """
-log_dict = {}
+    log_dict = {}
 
     with open(filename, 'r') as file:
         for line in file:
