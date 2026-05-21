@@ -1,6 +1,5 @@
 # Ejercicio 1 - Leer líneas de un archivo
 
-
 def read_lines(filename):
     """
     Lee un archivo de texto y retorna una lista con sus líneas.
@@ -25,8 +24,7 @@ def read_lines(filename):
         # archivo contiene: "manzana\n  banana\npera\n"
         read_lines("datos.txt") -> ["manzana", "banana", "pera"]
     """
-lista = []
-
+    lista = []
     with open(filename, 'r') as archivo:
         for linea in archivo:
             linea_limpia = linea.strip()
