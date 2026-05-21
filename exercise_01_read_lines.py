@@ -25,17 +25,12 @@ def read_lines(filename):
         # archivo contiene: "manzana\n  banana\npera\n"
         read_lines("datos.txt") -> ["manzana", "banana", "pera"]
     """
-    lista = []
-      
+    lines = []
     with open(filename, 'r') as archivo:
-        lineas = archivo.read().splitlines()
-
-    for linea in lineas:
-        linea_limpia = linea.strip()
-        
-        if linea_limpia != "":
-            lista.append(linea_limpia)
-
-    return lista
+        for line in archivo:
+            clean = line.strip()
+            if clean != "":
+                lines.append(clean)
+    return lines
 
 
