@@ -31,7 +31,7 @@ def read_sales(filename):
             "producto2": [200.0],
         }
     """
-resultado = {}
+    resultado = {}
     with open (filename, 'r') as archivo:
         contenido = archivo.read()
     
@@ -69,7 +69,7 @@ def process_sales(data):
         # imprime: "producto1: ventas totales $250.00, promedio $125.00"
     """
 
-for producto in data:
+    for producto in data:
         total = sum(data[producto])
         promedio = total / len(data[producto])
         print(f"{producto}: ventas totales ${total:.2f}, promedio ${promedio:.2f}")
