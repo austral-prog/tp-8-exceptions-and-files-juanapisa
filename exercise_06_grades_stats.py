@@ -34,7 +34,7 @@ def grades_stats(filename):
             "Cami": (10.0, 10.0, 10.0),
         }
     """
-stats= {}
+    stats= {}
 
     with open(filename, 'r') as archivo:
         for line in archivo:
