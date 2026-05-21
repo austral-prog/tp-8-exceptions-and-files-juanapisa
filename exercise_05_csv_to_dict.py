@@ -34,7 +34,7 @@ def csv_to_dict(filename):
             {"name": "Bob", "age": 25, "city": "Rosario"},
         ]
     """
-result = []
+    result = []
     with open(filename, 'r') as archivo:
         lines = [line.strip() for line in archivo if line.strip()]
         
